@@ -1,0 +1,143 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-1">
+  <div class="col-lg-4 offset-lg-4">
+    <div class="card card-custom">
+      <div class="card-body">
+        <h5 class="card-title card-title-custom text-center"> {{operacion}} Cita !</h5>
+        <form [formGroup]="formCita" (ngSubmit)="addCita()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              formControlName="nombre"
+              placeholder="Nombre"
+            />
+            <span
+              *ngIf="
+                formCita.get('nombre')?.hasError('required') &&
+                formCita.get('nombre')?.touched
+              "
+            >
+              El Campo Nombre es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input
+              type="email"
+              class="form-control"
+              id="correo"
+              formControlName="correo"
+              placeholder="Correo"
+            />
+            <span
+              *ngIf="
+                formCita.get('correo')?.hasError('required') &&
+                formCita.get('correo')?.touched
+              "
+            >
+              El Campo Correo es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+            <input
+              type="date"
+              class="form-control"
+              id="fecha"
+              formControlName="fecha"
+            />
+            <span
+              *ngIf="
+                formCita.get('fecha')?.hasError('required') &&
+                formCita.get('fecha')?.touched
+              "
+            >
+              El Campo Fecha es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="hora" class="form-label">Hora</label>
+            <select
+              class="form-select"
+              title="Selecciona una hora"
+              name="hora"
+              formControlName="hora"
+            >
+              <option value="" disabled selected>Selecciona una hora</option>
+              <ng-container *ngFor="let hora of generarHorasDisponibles()">
+                <option [value]="hora">{{ hora }}</option>
+              </ng-container>
+            </select>
+            <span
+              *ngIf="
+                formCita.get('hora')?.hasError('required') &&
+                formCita.get('hora')?.touched
+              "
+            >
+              El Campo Hora es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="procedimiento" class="form-label">Procedimiento</label>
+            <input
+              type="text"
+              class="form-control"
+              id="procedimiento"
+              formControlName="procedimiento"
+              placeholder="Procedimiento"
+            />
+            <span
+              *ngIf="
+                formCita.get('procedimiento')?.hasError('required') &&
+                formCita.get('procedimiento')?.touched
+              "
+            >
+              El Campo Procedimiento es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="celular" class="form-label">Celular</label>
+            <input
+              type="number"
+              class="form-control"
+              id="celular"
+              formControlName="celular"
+              placeholder="Celular"
+            />
+            <span
+              *ngIf="
+                formCita.get('celular')?.hasError('required') &&
+                formCita.get('celular')?.touched
+              "
+            >
+              El Campo Celular es <strong>Obligatorio!</strong>
+            </span>
+          </div>
+          <div class="row mb-3 text-center">
+            <div class="col-lg-6">
+              <button
+                [disabled]="formCita.invalid"
+                type="submit"
+                class="btn btn-primary btn-custom"
+              >
+                Guardar Cambios
+              </button>
+            </div>
+            <div class="col-lg-6">
+              <button
+                routerLink="/dashboard/listCita"
+                type="submit"
+                class="btn btn-danger btn-custom"
+              >
+                Volver
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

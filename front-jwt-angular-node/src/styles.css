@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #deccf5;
+    height: 100%;
+}
+
+.logo {
+    height: 130px;
+    margin-bottom: 10px;
+}
+
+.logo2 {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.body {
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Arial', sans-serif;
+
+  font-size: 16px;
+
+}
+
+.navbar-nav .btn {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+
+}
+
+.bg-purple {
+  background-color: rgb(231, 124, 231) !important;
+  width: 100%;
+}
